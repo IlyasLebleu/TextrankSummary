@@ -6,6 +6,8 @@ As opposed to the aforementioned article, where the distance metric incorporates
 
 Here, n is the size of the cleaned output: that is, the vectorized output of the recurrent neural network, from which the **most significant** axis (in the SVD of the matrix of sentence vectors) has been removed (suprisingly, this has been proved to have a positive effect on the data).
 
+This version of the LSTM also deviates from the originally described one on other points: especially, the weights used in the network are not universal, but depend on the phrase node type (x-bar schemas are treated as special phrase nodes).
+
 Another innovation is the topic vector. This vector represents the main topic of the sentence, and is produced by sending through a recurrent neural network the raw sentence vectors. (Note: Learning process for the topic vector is yet unclear, and, if a good database is lacking, it may revert to a simple average of the sentence vectors).
 
 The main algorithm used is a modified TextRank, with weights both on the undirected edges (corresponding to the distance between sentences, averaged in both directions to prevent inconsistencies) and on the vertices (corresponding to the distance between a sentence and the topic).
