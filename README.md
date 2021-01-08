@@ -1,6 +1,8 @@
 # TextrankSummary
 
-This architecture uses a recurrent neural network to compute vectorized representations of phrases and sentences. Their distances are then used as distance between sentence nodes in the main TextRank. As opposed to the aforementioned article, where the distance metric incorporates the angle and the absolute distance of sentence vectors as parameters, this one will use a (learned) neural network from a vector space of size 3n+1, incorporating both vectors as well as their dot product as parameters, as well as the topic vector (more on this later). This allows for a more flexible distance metric, able to place emphasis on relevant differences and similarities between the sentences.
+This architecture uses a LSTM (a tree-shaped variation on a recurrent neural network, described in https://arxiv.org/pdf/1503.00075.pdf) to compute vectorized representations of phrases and sentences. Their distances are then used as distance between sentence nodes in the main TextRank.
+
+As opposed to the aforementioned article, where the distance metric incorporates the angle and the absolute distance of sentence vectors as parameters, this one will use a (learned) neural network from a vector space of size 3n+1, incorporating both vectors as well as their dot product as parameters, as well as the topic vector (more on this later). This allows for a more flexible distance metric, able to place emphasis on relevant differences and similarities between the sentences.
 
 Here, n is the size of the cleaned output: that is, the vectorized output of the recurrent neural network, from which the **most significant** axis (in the SVD of the matrix of sentence vectors) has been removed (suprisingly, this has been proved to have a positive effect on the data).
 
