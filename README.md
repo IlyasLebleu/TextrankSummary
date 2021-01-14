@@ -8,20 +8,20 @@ Here, n is the size of the cleaned output: that is, the vectorized output of the
 
 This version of the LSTM also deviates from the originally described one on other points: especially, the weights used in the network are not universal, but depend on the phrase node type (x-bar schemas are treated as special phrase nodes).
 
-Another innovation is the topic vector. This vector represents the main topic of the sentence, and is produced by sending through a recurrent neural network the raw sentence vectors. (Note: Learning process for the topic vector is yet unclear, and, if a good database is lacking, it may revert to a simple average of the sentence vectors).
+Another innovation is the topic vector. This vector represents the main topic of the sentence, and computed as the average of sentence vectors (Note: Another possibility, not examined here due to a lack of relevant databases, would be to compute the topic vector by the way of a recurrent neural network).
 
 The main algorithm used is a modified TextRank, with weights both on the undirected edges (corresponding to the distance between sentences, averaged in both directions to prevent inconsistencies) and on the vertices (corresponding to the distance between a sentence and the topic).
 
 With this, the most relevant sentences are selected and incorporated into the summary.
 
-Once all three (two?) neural networks are properly trained, the summarization process is thus:
-  - Parse the text into sentences using a regex
+Once both neural networks are properly trained, the summarization process is thus:
+  - Parse the text into sentences using a regex - **DONE**
   - Parse the sentences into a labelled tree structure using a Huggingface model
   - Find x-bar schemas, flatten them and label them
   - Run each sentence through the (already trained) LSTM to compute sentence vectors
-  - Compute the topic vector
-  - Perform SVD and clean the sentence and topic vectors
+  - Compute the topic vector - **DONE**
+  - Perform SVD and clean the sentence and topic vectors - **DONE**
   - Compute the distances between sentences
-  - Build the TextRank graph
-  - Run TextRank to compute sentence relevance
-  - Select the most relevant sentences up to the summary word limit
+  - Build the TextRank graph - **DONE**
+  - Run TextRank to compute sentence relevance - **DONE**
+  - Select the most relevant sentences up to the summary word limit - **DONE**
