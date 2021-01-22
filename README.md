@@ -16,12 +16,13 @@ With this, the most relevant sentences are selected and incorporated into the su
 
 Once both neural networks are properly trained, the summarization process is thus:
   - Parse the text into sentences using a regex - **DONE**
-  - Parse the sentences into a labelled tree structure using a parse tree model (spaCy, cf. https://spacy.io/models)
+  - Compute the word embeddings - **DONE**
+  - Parse the sentences into a labelled tree structure using a parse tree model (spaCy, cf. https://spacy.io/models) *(this part and the two following are currently replaced by a linear summation of word embeddings)*
   - Find x-bar schemas, flatten them and label them
   - Run each sentence through the (already trained) LSTM to compute sentence vectors
   - Compute the topic vector - **DONE**
   - Perform SVD and clean the sentence and topic vectors - **DONE**
-  - Compute the distances between sentences
+  - Compute the distances between sentences - **DONE**
   - Build the TextRank graph - **DONE**
   - Run TextRank to compute sentence relevance - **DONE**
   - Select the most relevant sentences up to the summary word limit - **DONE**
